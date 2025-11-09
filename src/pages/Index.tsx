@@ -8,9 +8,13 @@ import Icon from '@/components/ui/icon';
 export default function Index() {
   const [activeSection, setActiveSection] = useState('home');
   const [scrollY, setScrollY] = useState(0);
+  const [parallaxOffset, setParallaxOffset] = useState(0);
 
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+      setParallaxOffset(window.scrollY * 0.5);
+    };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -62,7 +66,14 @@ export default function Index() {
       </nav>
 
       <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/20" />
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: 'url(https://cdn.poehali.dev/projects/ce562ae1-bf39-4b24-a4b6-79d8f44742c5/files/8e510ddb-58a2-4e4d-a63a-7d0a06c5c998.jpg)',
+            transform: `translateY(${parallaxOffset}px)`
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-background/90 via-background/80 to-background/90" />
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center animate-fade-in">
             <div className="inline-flex items-center gap-2 bg-accent px-4 py-2 rounded-full mb-6">
@@ -96,8 +107,15 @@ export default function Index() {
         </div>
       </section>
 
-      <section id="research" className="py-20 md:py-24 bg-accent/30">
-        <div className="container mx-auto px-6">
+      <section id="research" className="py-20 md:py-24 relative overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-20"
+          style={{
+            backgroundImage: 'url(https://cdn.poehali.dev/projects/ce562ae1-bf39-4b24-a4b6-79d8f44742c5/files/21936625-cbc1-4a1d-9749-059a35d124e9.jpg)'
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/90 to-background/95" />
+        <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12 md:mb-16 animate-fade-in">
               <Icon name="Search" size={48} className="text-primary mx-auto mb-4" />
@@ -192,8 +210,14 @@ export default function Index() {
               </TabsList>
 
               <TabsContent value="conformity" className="animate-fade-in-fast">
-                <Card className="p-6 md:p-8">
-                  <div className="flex flex-col md:flex-row items-start gap-6">
+                <Card className="p-6 md:p-8 relative overflow-hidden">
+                  <div 
+                    className="absolute inset-0 bg-cover bg-center opacity-10"
+                    style={{
+                      backgroundImage: 'url(https://cdn.poehali.dev/projects/ce562ae1-bf39-4b24-a4b6-79d8f44742c5/files/a57b84f8-7d98-4f39-9249-86b9fc77d881.jpg)'
+                    }}
+                  />
+                  <div className="flex flex-col md:flex-row items-start gap-6 relative z-10">
                     <div className="p-4 bg-primary/10 rounded-xl flex-shrink-0">
                       <Icon name="UserCheck" size={40} className="text-primary" />
                     </div>
@@ -304,8 +328,14 @@ export default function Index() {
               </TabsContent>
 
               <TabsContent value="panic" className="animate-fade-in-fast">
-                <Card className="p-6 md:p-8">
-                  <div className="flex flex-col md:flex-row items-start gap-6">
+                <Card className="p-6 md:p-8 relative overflow-hidden">
+                  <div 
+                    className="absolute inset-0 bg-cover bg-center opacity-10"
+                    style={{
+                      backgroundImage: 'url(https://cdn.poehali.dev/projects/ce562ae1-bf39-4b24-a4b6-79d8f44742c5/files/88517c96-35fc-4a29-ab4d-2e3927f0e5b8.jpg)'
+                    }}
+                  />
+                  <div className="flex flex-col md:flex-row items-start gap-6 relative z-10">
                     <div className="p-4 bg-destructive/10 rounded-xl flex-shrink-0">
                       <Icon name="AlertCircle" size={40} className="text-destructive" />
                     </div>
@@ -344,8 +374,15 @@ export default function Index() {
         </div>
       </section>
 
-      <section id="experiments" className="py-20 md:py-24 bg-accent/30">
-        <div className="container mx-auto px-6">
+      <section id="experiments" className="py-20 md:py-24 relative overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-10"
+          style={{
+            backgroundImage: 'url(https://cdn.poehali.dev/projects/ce562ae1-bf39-4b24-a4b6-79d8f44742c5/files/a57b84f8-7d98-4f39-9249-86b9fc77d881.jpg)'
+          }}
+        />
+        <div className="absolute inset-0 bg-background/90" />
+        <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12 md:mb-16">
               <Icon name="FlaskConical" size={48} className="text-primary mx-auto mb-4" />
@@ -537,8 +574,15 @@ export default function Index() {
         </div>
       </section>
 
-      <section id="conclusions" className="py-20 md:py-24 bg-accent/30">
-        <div className="container mx-auto px-6">
+      <section id="conclusions" className="py-20 md:py-24 relative overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-5"
+          style={{
+            backgroundImage: 'url(https://cdn.poehali.dev/projects/ce562ae1-bf39-4b24-a4b6-79d8f44742c5/files/21936625-cbc1-4a1d-9749-059a35d124e9.jpg)'
+          }}
+        />
+        <div className="absolute inset-0 bg-background/95" />
+        <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12 md:mb-16">
               <Icon name="CheckCircle" size={48} className="text-primary mx-auto mb-4" />
